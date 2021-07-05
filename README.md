@@ -12,3 +12,4 @@ Steps to run project:
 1) Install the core dot net framework(https://dotnet.microsoft.com/download).
 2) Clone Project.
 3) Run 'dotnet run' in command prompt form project folder.
+4) Open a browser and navigate to http://localhost:5000/api/student .
