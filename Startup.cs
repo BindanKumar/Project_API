@@ -26,10 +26,13 @@ namespace Project_API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddLogging();
+            services.AddCors(c =>
+            {
+                c.AddPolicy("ApiCorsPolicy", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
             // Add framework services.
             services.AddMvc();
-
-            services.AddLogging();
             // Add our repository type
             services.AddSingleton<IStudentRepository, StudentRepository>();
         }
@@ -45,6 +48,7 @@ namespace Project_API
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseCors("ApiCorsPolicy");
 
             app.UseEndpoints(endpoints =>
             {
